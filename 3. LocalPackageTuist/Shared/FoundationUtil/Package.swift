@@ -9,11 +9,9 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "FoundationUtil",
-            type: .dynamic,
             targets: ["FoundationUtil"]),
         .library(
             name: "EnumUtil",
-            type: .dynamic,
             targets: ["EnumUtil"]),
     ],
     dependencies: [

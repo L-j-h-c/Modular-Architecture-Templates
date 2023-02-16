@@ -1,5 +1,6 @@
 import UIKit
 import LocalPackageTuistKit
+import LocalPackageTuistUI
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
         LocalPackageTuistKit.hello()
-//        LocalPackageTuistUI.hello()
+        LocalPackageTuistUI.hello()
 
         return true
     }

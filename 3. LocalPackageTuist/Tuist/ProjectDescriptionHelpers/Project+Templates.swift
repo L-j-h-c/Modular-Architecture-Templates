@@ -15,6 +15,9 @@ extension Project {
         targets += [Project.watchApp()]
         return Project(name: name,
                        organizationName: "tuist.io",
+                       packages: [.local(path: "Core/Core")
+                                 ],
+                       settings: .settings(base: ["OTHER_LDFLAGS": "$(inherited) -all_load"]),
                        targets: targets,
                        schemes: [
                            Scheme(
@@ -37,7 +40,7 @@ extension Project {
                 infoPlist: .default,
                 sources: ["Targets/\(name)/Sources/**"],
                 resources: [],
-                             dependencies: [.external(name: "LocalCore")],
+                             dependencies: [.package(product: "LocalCore")],
                              settings: .settings(base: ["OTHER_LDFLAGS": "$(inherited) -all_load"])
         )
         let tests = Target(name: "\(name)Tests",
@@ -94,14 +97,14 @@ extension Project {
             "UILaunchStoryboardName": "LaunchScreen"
             ]
         let mainTarget = Target(
-            name: "watch",
+            name: "watchApp",
             platform: .watchOS,
             product: .app,
             bundleId: "io.tuist.watch",
             infoPlist: .extendingDefault(with: infoPlist),
             sources: ["Targets/LocalPackageTuistWatch/Sources/**"],
             resources: ["Targets/LocalPackageTuistWatch/Resources/**"],
-            dependencies: [.external(name: "LocalCore")],
+            dependencies: [.package(product: "LocalCore")],
             settings: .settings(base: ["OTHER_LDFLAGS": "$(inherited) -all_load"])
         )
         return mainTarget
